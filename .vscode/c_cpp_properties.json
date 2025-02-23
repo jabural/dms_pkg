@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/javier/rtabmap_ws/install/rtabmap_slam/include/**",
+        "/home/javier/rtabmap_ws/install/rtabmap_odom/include/**",
+        "/home/javier/rtabmap_ws/install/rtabmap_util/include/**",
+        "/home/javier/rtabmap_ws/install/rtabmap_sync/include/**",
+        "/home/javier/rtabmap_ws/install/rtabmap_rviz_plugins/include/**",
+        "/home/javier/rtabmap_ws/install/rtabmap_conversions/include/**",
+        "/home/javier/rtabmap_ws/install/rtabmap_msgs/include/**",
+        "/home/javier/pcl_ws/install/turtlebot3_gazebo/include/**",
+        "/home/javier/turtlebot3_ws/install/velodyne_gazebo_plugins/include/**",
+        "/home/javier/turtlebot3_ws/install/turtlebot3_gazebo/include/**",
+        "/home/javier/turtlebot3_ws/install/turtlebot3_fake_node/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/javier/javier_ws/src/dms/include/**",
+        "/home/javier/javier_ws/src/dynamo_base/include/**",
+        "/home/javier/javier_ws/src/navigation_bot/include/**",
+        "/home/javier/javier_ws/src/ros2_bt_tut/include/**",
+        "include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

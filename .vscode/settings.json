@@ -1,0 +1,22 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/javier/rtabmap_ws/build/rtabmap_python",
+        "/home/javier/rtabmap_ws/install/rtabmap_python/lib/python3.10/site-packages",
+        "/home/javier/rtabmap_ws/install/rtabmap_msgs/local/lib/python3.10/dist-packages",
+        "/home/javier/pcl_ws/install/robot_math/lib/python3.10/site-packages",
+        "/home/javier/pcl_ws/install/navigation_tb3/local/lib/python3.10/dist-packages",
+        "/home/javier/pcl_ws/install/ai_assitance/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/javier/rtabmap_ws/build/rtabmap_python",
+        "/home/javier/rtabmap_ws/install/rtabmap_python/lib/python3.10/site-packages",
+        "/home/javier/rtabmap_ws/install/rtabmap_msgs/local/lib/python3.10/dist-packages",
+        "/home/javier/pcl_ws/install/robot_math/lib/python3.10/site-packages",
+        "/home/javier/pcl_ws/install/navigation_tb3/local/lib/python3.10/dist-packages",
+        "/home/javier/pcl_ws/install/ai_assitance/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

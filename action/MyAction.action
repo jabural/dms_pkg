@@ -1,0 +1,8 @@
+# Goal
+int32 duration    # Duration in seconds for the action to run
+---
+# Result
+bool success      # True if the action completed successfully
+---
+# Feedback
+float32 progress  # Progress percentage (0.0 to 1.0)

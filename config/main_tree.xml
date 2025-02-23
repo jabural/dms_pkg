@@ -1,0 +1,10 @@
+<root main_tree_to_execute = "MainTree" >
+  <BehaviorTree ID="MainTree">
+    <Sequence name="MainReactiveSequence">
+      <ListeningAction name="listening"/>
+      <ThinkingNode name="thinking"/>
+      <SpeakingAction name="speaking"/>
+    </Sequence>
+  </BehaviorTree>
+</root>
+
