@@ -1,59 +1,53 @@
-#ifndef ROS2_BT_TUT__BT_TUT_01_HPP_
-#define ROS2_BT_TUT__BT_TUT_01_HPP_
+// "Copyright [2025] jabural"
+#ifndef INCLUDE_MAIN_HPP_
+#define INCLUDE_MAIN_HPP_
 
+#include <memory>
+#include <string>
 #include "behaviortree_cpp_v3/action_node.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
 #include "dms_pkg/action/my_action.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
-#include "behaviortree_cpp_v3/action_node.h"
-#include "behaviortree_cpp_v3/bt_factory.h"
 
-using namespace BT;
+
 typedef dms_pkg::action::MyAction ThinkingAction;
 typedef rclcpp_action::ClientGoalHandle<ThinkingAction> GoalHandle;
 
 // Example of custom SyncActionNode (synchronous action)
 // without ports.
-class ListeningAction : public BT::SyncActionNode
-{
-public:
-  ListeningAction(const std::string& name) :
-      BT::SyncActionNode(name, {})
-  {}
+class ListeningAction : public BT::SyncActionNode {
+ public:
+  explicit ListeningAction(const std::string & name) :
+      BT::SyncActionNode(name, {}) {}
 
   // You must override the virtual function tick()
-  NodeStatus tick() override
-  {
+  BT::NodeStatus tick() override {
     std::cout << "ListeningAction: " << this->name() << std::endl;
-    return NodeStatus::SUCCESS;
+    return BT::NodeStatus::SUCCESS;
   }
 };
 
-class ThinkingNode : public BT::StatefulActionNode
-{
-public:
-  ThinkingNode(const std::string& name, const BT::NodeConfiguration& conf)
+class ThinkingNode : public BT::StatefulActionNode {
+ public:
+  ThinkingNode(const std::string & name, const BT::NodeConfiguration & conf)
     : BT::StatefulActionNode(name, conf),
       action_in_progress_(false),
       action_finished_(false),
-      action_success_(false)
-  {
+      action_success_(false) {
     // Initialize your ROS2 action client here.
     // Note: You may need to pass a shared pointer to an rclcpp::Node via the BT blackboard.
     ros_node_ = conf.blackboard->get<rclcpp::Node::SharedPtr>("node");
     action_client_ = rclcpp_action::create_client<ThinkingAction>(ros_node_, "thinking");
   }
 
-  static BT::PortsList providedPorts()
-  {
+  static BT::PortsList providedPorts() {
     // Optionally, define input ports, e.g., for the action duration.
     return { BT::InputPort<int>("duration") };
   }
 
   // Called once when the node is first ticked
-  BT::NodeStatus onStart() override
-  {
+  BT::NodeStatus onStart() override {
     // (Optionally) retrieve goal parameters from the blackboard.
     if (action_in_progress_) {
       // A goal is already active, so just remain running.
@@ -61,8 +55,8 @@ public:
     }
 
     int duration;
-    if(!getInput<int>("duration", duration))
-      duration = 6; // default value
+    if (!getInput<int>("duration", duration))
+      duration = 6;  // default value
 
     // Prepare the goal
     auto goal_msg = ThinkingAction::Goal();
@@ -112,8 +106,7 @@ public:
   }
 
   // Called on every tick until the node returns SUCCESS/FAILURE.
-  BT::NodeStatus onRunning() override
-  {
+  BT::NodeStatus onRunning() override {
     // Optionally process ROS callbacks, e.g., if not using a separate spinning thread.
     // rclcpp::spin_some(ros_node_);
 
@@ -127,8 +120,7 @@ public:
   }
 
   // Called if the node is halted (e.g., higher priority node interrupts execution).
-  void onHalted() override
-  {
+  void onHalted() override {
     if (action_in_progress_) {
       // Cancel the goal if possible.
       // Note: cancellation APIs may require additional error handling.
@@ -138,7 +130,7 @@ public:
     action_finished_ = false;
   }
 
-private:
+ private:
   bool action_in_progress_;
   bool action_finished_;
   bool action_success_;
@@ -147,17 +139,14 @@ private:
 };
 
 
-class SpeakingAction : public BT::SyncActionNode
-{
-public:
-  SpeakingAction(const std::string& name) :
+class SpeakingAction : public BT::SyncActionNode {
+ public:
+  explicit SpeakingAction(const std::string & name) :
   BT::SyncActionNode(name, {}) {}
-  NodeStatus tick()
-  {
+  BT::NodeStatus tick() {
     std::cout << "SpeakingAction open" << std::endl;
-    return NodeStatus::SUCCESS;
+    return BT::NodeStatus::SUCCESS;
   }
-
 };
 
-#endif //ROS2_BT_TUT__BT_TUT_01_HPP_
+#endif  // INCLUDE_MAIN_HPP_
